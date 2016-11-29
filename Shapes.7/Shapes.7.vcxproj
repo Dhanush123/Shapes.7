@@ -207,7 +207,7 @@
     <None Include="Shapes.7.aps" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Desktop\android.bmp" />
+    <Image Include="res\android.bmp" />
     <Image Include="res\Shapes.7.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
