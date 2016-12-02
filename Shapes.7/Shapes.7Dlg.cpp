@@ -78,6 +78,10 @@ BEGIN_MESSAGE_MAP(CShapes7Dlg, CDialogEx)
 	ON_EN_CHANGE(IDC_EDIT4, &CShapes7Dlg::OnEnChangeEdit4)
 	ON_EN_CHANGE(IDC_EDIT7, &CShapes7Dlg::OnEnChangeEdit7)
 	ON_STN_CLICKED(IDC_STATIC100, &CShapes7Dlg::OnStnClickedStatic100)
+	ON_EN_CHANGE(IDC_EDIT9, &CShapes7Dlg::OnEnChangeEdit9)
+	ON_EN_CHANGE(IDC_EDIT6, &CShapes7Dlg::OnEnChangeEdit6)
+	ON_EN_CHANGE(IDC_EDIT8, &CShapes7Dlg::OnEnChangeEdit8)
+	ON_EN_CHANGE(IDC_EDIT10, &CShapes7Dlg::OnEnChangeEdit10)
 END_MESSAGE_MAP()
 
 
@@ -123,7 +127,7 @@ BOOL CShapes7Dlg::OnInitDialog()
 	pCombo->InsertString(5, _T("Box"));
 	pCombo->InsertString(6, _T("Cylinder"));
 	pCombo->InsertString(7, _T("Prism"));
-	pCombo->SetCurSel(0); // or -1 for unselected
+	pCombo->SetCurSel(-1); // -1 for unselected
 
 	CStatic* pPicture = (CStatic*)GetDlgItem(IDC_STATIC100);
 	pPicture->ModifyStyle(0xF, SS_BITMAP, SWP_NOSIZE);
@@ -184,10 +188,73 @@ HCURSOR CShapes7Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
-
 void CShapes7Dlg::OnCbnSelchangeCombo1()
 {
+	CComboBox* pCombo1 = (CComboBox*)GetDlgItem(IDC_COMBO1);
+	int x = pCombo1->GetCurSel(); // 0 for first item...
+	CEdit* pEdit6 = reinterpret_cast<CEdit*>(GetDlgItem(IDC_EDIT6));
+	CEdit* pEdit8 = reinterpret_cast<CEdit*>(GetDlgItem(IDC_EDIT8));
+	CEdit* pEdit9 = reinterpret_cast<CEdit*>(GetDlgItem(IDC_EDIT9));
+	CEdit* pEdit10 = reinterpret_cast<CEdit*>(GetDlgItem(IDC_EDIT10));
+	//{"SQUARE", "RECTANGLE", "CIRCLE", "TRIANGLE", "CUBE", "BOX", "CYLINDER", "PRISM"}; 
+	//^sample code to help with switch
+	//6 is length/side, 9 is height, 8 is width, 10 is radius
+	if(x == 0)
+	{
+		pEdit6->SetWindowText(CString(_T("Side")));
+		pEdit9->SetWindowText(CString(_T("")));
+		pEdit8->SetWindowText(CString(_T("")));
+		pEdit10->SetWindowText(CString(_T("")));
+	}
+	if(x == 1)
+	{
+		pEdit6->SetWindowText(CString(_T("Length")));
+		pEdit9->SetWindowText(CString(_T("")));
+		pEdit8->SetWindowText(CString(_T("Width")));
+		pEdit10->SetWindowText(CString(_T("")));
+	}
+	if(x == 2)
+	{
+		pEdit6->SetWindowText(CString(_T("")));
+		pEdit9->SetWindowText(CString(_T("")));
+		pEdit8->SetWindowText(CString(_T("")));
+		pEdit10->SetWindowText(CString(_T("Radius")));
+	}
+	if(x == 3)
+	{
+		pEdit6->SetWindowText(CString(_T("Side")));
+		pEdit9->SetWindowText(CString(_T("")));
+		pEdit8->SetWindowText(CString(_T("")));
+		pEdit10->SetWindowText(CString(_T("")));
+	}
+	if(x == 4)
+	{
+		pEdit6->SetWindowText(CString(_T("Side")));
+		pEdit9->SetWindowText(CString(_T("")));
+		pEdit8->SetWindowText(CString(_T("")));
+		pEdit10->SetWindowText(CString(_T("")));
+	}
+	if(x == 5)
+	{
+		pEdit6->SetWindowText(CString(_T("Length")));
+		pEdit9->SetWindowText(CString(_T("Height")));
+		pEdit8->SetWindowText(CString(_T("Width")));
+		pEdit10->SetWindowText(CString(_T("")));
+	}
+	if(x == 6)
+	{
+		pEdit6->SetWindowText(CString(_T("")));
+		pEdit9->SetWindowText(CString(_T("Height")));
+		pEdit8->SetWindowText(CString(_T("")));
+		pEdit10->SetWindowText(CString(_T("Radius")));
+	}
+	if(x == 7)
+	{
+		pEdit6->SetWindowText(CString(_T("Length")));
+		pEdit9->SetWindowText(CString(_T("Height")));
+		pEdit8->SetWindowText(CString(_T("")));
+		pEdit10->SetWindowText(CString(_T("")));
+	}
 	// TODO: Add your control notification handler code here
 }
 
@@ -253,6 +320,7 @@ void CShapes7Dlg::OnBnClickedButton1()
 	//^sample code to help with switch
 	vector<string> params;
 	ostringstream sout;
+
 	switch (n) 
 	{
 		case 0:
@@ -361,4 +429,49 @@ void CShapes7Dlg::OnEnChangeEdit7()
 void CShapes7Dlg::OnStnClickedStatic100()
 {
 	// TODO: Add your control notification handler code here
+}
+
+
+
+void CShapes7Dlg::OnEnChangeEdit9()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
+}
+
+
+void CShapes7Dlg::OnEnChangeEdit6()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
+}
+
+
+void CShapes7Dlg::OnEnChangeEdit8()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
+}
+
+
+void CShapes7Dlg::OnEnChangeEdit10()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
 }

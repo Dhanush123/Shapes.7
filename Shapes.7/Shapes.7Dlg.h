@@ -40,4 +40,8 @@ public:
 	afx_msg void OnEnChangeEdit4();
 	afx_msg void OnEnChangeEdit7();
 	afx_msg void OnStnClickedStatic100();
+	afx_msg void OnEnChangeEdit9();
+	afx_msg void OnEnChangeEdit6();
+	afx_msg void OnEnChangeEdit8();
+	afx_msg void OnEnChangeEdit10();
 };
